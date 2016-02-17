@@ -135,10 +135,29 @@ function calc(results) {
                     cWinners.sort(function (a, b) {
                         return b.sum - a.sum;
                     });
+                    var sums = {};
                     for (var i = 0; i < cWinners.length; i++) {
-                        console.log(cWinners[i].num + ' -- ' + placeCounter + ' place');
+                        if (sums[cWinners[i].sum] === undefined) {
+                            sums[cWinners[i].sum] = [cWinners[i]];
+                        } else {
+                            sums[cWinners[i].sum].push(cWinners[i]);
+                        }
+                        //console.log(cWinners[i]);
+                        //console.log(cWinners[i].num + ' -- ' + placeCounter + ' place');
+                        //placeCounter++;
+                        //dancers[cWinners[i].index].excluded = true;
+                    }
+                    var sumsKeys = Object.keys(sums);
+                    sumsKeys.sort(function (a, b) {
+                        return (+b) - (+a);
+                    });
+                    for (var i = 0; i < sumsKeys.length; i++) {
+                        var w = sums[sumsKeys[i]];
+                        for (var j = 0; j < w.length; j++) {
+                            console.log(w[i].num + ' -- ' + placeCounter + ' place');
+                            dancers[w[i].index].excluded = true;
+                        }
                         placeCounter++;
-                        dancers[cWinners[i].index].excluded = true;
                     }
                 }
             }
