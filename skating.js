@@ -53,10 +53,10 @@ var Skating = {
                 table[0][i] = '1' + ((i == 0) ? '' : '-' + (i + 1));
             }
 
-            console.log(majority);
+            //console.log(majority);
 
             for (var round = 1; round <= roundsCount; round++) {
-                console.log('step ' + round + ': ');
+                //console.log('step ' + round + ': ');
                 var currentMajorities = Skating.fillArrayWithValue(dancers.length, 0);
                 for (var i = 0; i < dancers.length; i++) {
                     var currentPoints = dancers[i].points;
@@ -127,11 +127,11 @@ var Skating = {
                         for (var i = 0; i < sumsKeys.length; i++) {
                             var w = sums[sumsKeys[i]];
                             for (var j = 0; j < w.length; j++) {
-                                console.log(w[j].num + ' -- ' + placeCounter + ' place');
+                                //console.log(w[j].num + ' -- ' + placeCounter + ' place');
                                 places[placeCounter].push(w[j].num);
                                 dancers[w[j].index].excluded = true;
                             }
-                            console.log(w);
+                            //console.log(w);
                             placeCounter++;
                         }
                     }
@@ -173,43 +173,3 @@ var Dancer = function (num) {
 
     this.excluded = false;
 };
-
-//var results = {
-//    '1': [1, 2, 1, 3, 4],
-//    '2': [4, 3, 4, 5, 5],
-//    '3': [5, 5, 5, 4, 2],
-//    '4': [2, 1, 2, 2, 1],
-//    '5': [3, 4, 3, 1, 3]
-//};
-
-//var results = {
-//    '1': [1, 2, 2, 1, 3],
-//    '2': [2, 1, 1, 2, 2],
-//    '3': [3, 2, 3, 3, 1]
-//};
-
-//var results = {
-//    '1': [3, 1, 2, 1, 1, 2, 1],
-//    '2': [2, 2, 3, 5, 2, 3, 2],
-//    '3': [4, 4, 4, 3, 3, 1, 3],
-//    '4': [1, 6, 5, 2, 5, 6, 5],
-//    '5': [5, 3, 1, 7, 6, 5, 7],
-//    '6': [6, 5, 6, 4, 7, 7, 4],
-//    '7': [7, 7, 7, 6, 4, 4, 6]
-//};
-
-//var results = {
-//    '1': [1, 2, 3],
-//    '2': [2, 3, 1],
-//    '3': [3, 1, 2]
-//};
-
-var results = {
-    '1': [1, 1, 1],
-    '2': [2, 3, 2],
-    '3': [3, 5, 4],
-    '4': [4, 4, 3],
-    '5': [5, 2, 5]
-};
-
-console.log(Skating.calc(results));
