@@ -1,6 +1,6 @@
 var Skating = {
     validate: function (results) {
-        return true;
+        return true; // verification at view module
     },
     fillArrayWithValue: function (n, v) {
         var arr = Array.apply(null, new Array(n));
@@ -8,7 +8,7 @@ var Skating = {
             return {index: i, value: v}
         });
     },
-    judges: 5,
+    judges: 3,
     calc: function (results) {
         var dancers = [];
         if (Skating.validate(results)) {
@@ -26,7 +26,7 @@ var Skating = {
                 }
             }
 
-            for (var i = 0; i < Skating.judges + 1; i++) {
+            for (var i = 0; i < dancers.length + 1; i++) {
                 var row = [];
                 for (var j = 0; j < dancers.length; j++) {
                     row.push([]);
@@ -126,6 +126,7 @@ var Skating = {
                                 places[placeCounter].push(w[j].num);
                                 dancers[w[j].index].excluded = true;
                             }
+                            console.log(w);
                             placeCounter++;
                         }
                     }
@@ -134,7 +135,7 @@ var Skating = {
                 //console.log('=====');
             }
 
-            console.log(places);
+            //console.log(places);
 
             return {
                 places: places,
