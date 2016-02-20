@@ -1,6 +1,6 @@
 /*!
  *  SkatingJS by @octav47 - http://tribunsky.com
- *  License - GPL v3.0
+ *  License - GNU GENERAL PUBLIC LICENSE Version 3
  */
 
 var Skating = {
