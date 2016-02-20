@@ -1,3 +1,8 @@
+/*!
+ *  SkatingJS by @octav47 - http://tribunsky.com
+ *  License - GPL v3.0
+ */
+
 var Skating = {
     validate: function (results) {
         return true; // verification at view module
