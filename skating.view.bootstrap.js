@@ -78,13 +78,15 @@
             skatingResult = $('#skating-result');
 
         generateTableButton.on('click', function () {
+            skatingResult.html('');
             var judges = +judgesInput.val(),
                 competitors = +competitorsInput.val();
             var table = $('#skating-table');
             table.empty();
             for (var k = 0; k < competitors; k++) {
+                table.append('<span>' + (k + 1) + ' пара </span>');
                 for (var i = 0; i < judges; i++) {
-                    var w = '<label class="select"><select data-i="' + k + '" data-j="' + i + '" ><option value="-" selected="selected" disabled="disabled">-</option>';
+                    var w = '<label class="select"><select data-i="' + k + '" data-j="' + i + '" ><option value="-" selected="selected">-</option>';
                     for (var j = 0; j < competitors; j++) {
                         w += '<option value="' + (j + 1) + '">' + (j + 1) + '</option>';
                     }
@@ -93,9 +95,21 @@
                 }
                 table.append('<br>');
             }
+
+            $('#skating-table').find('select').on('change', function () {
+                var i = $(this).attr('data-i'),
+                    j = $(this).attr('data-j'),
+                    value = $(this).val();
+
+                var selects = $('#skating-table').find('select[data-j="' + j + '"]').not(this);
+                selects.each(function (i, v) {
+                    $(this).find('option[value="' + value + '"]').css('display', 'none');
+                });
+            });
         });
 
         submitButton.on('click', function () {
+            skatingResult.html('');
             var table = $('#skating-table'),
                 data = parse(table),
                 judges = +judgesInput.val();
@@ -104,8 +118,9 @@
                 var result = Skating.calc(data);
                 showResult(result);
             } else {
+                skatingResult.html('Некорректные данные');
                 console.log('not verified');
             }
-        })
+        });
     })
 })(jQuery);
